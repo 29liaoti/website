@@ -164,110 +164,124 @@
             content: "•";
             color: #1d1d1f;
         }
-        
-        .big-risks {
+
+        .science-section {
             background: #f5f5f7;
             padding: 80px 20px;
-            margin-bottom: 0;
         }
-        
-        .big-risks h2 {
+
+        .science-container {
+            max-width: 980px;
+            margin: 0 auto;
+        }
+
+        .science-section h2 {
             font-size: 48px;
             line-height: 1.08349;
             font-weight: 600;
             letter-spacing: -0.003em;
-            margin-bottom: 60px;
-            text-align: center;
+            margin-bottom: 40px;
             color: #1d1d1f;
         }
-        
-        .big-risks-container {
-            max-width: 980px;
-            margin: 0 auto;
+
+        .science-section h3 {
+            font-size: 32px;
+            line-height: 1.125;
+            font-weight: 600;
+            letter-spacing: 0.004em;
+            margin: 40px 0 20px;
+            color: #1d1d1f;
         }
-        
-        .risk-item {
+
+        .science-section p {
+            font-size: 17px;
+            line-height: 1.47059;
+            font-weight: 400;
+            letter-spacing: -0.022em;
+            color: #6e6e73;
+            margin-bottom: 20px;
+        }
+
+        .science-term {
+            font-weight: 400;
+            color: #1d1d1f;
+        }
+
+        .context-term {
+            font-weight: 400;
+            color: #1d1d1f;
+        }
+
+        .citation {
+            font-weight: 400;
+            color: #6e6e73;
+        }
+
+        .process-card {
+            background: #fff;
+            padding: 30px;
+            margin-bottom: 20px;
+            border-radius: 18px;
+        }
+
+        .process-card h4 {
+            font-size: 24px;
+            line-height: 1.16667;
+            font-weight: 600;
+            letter-spacing: 0.009em;
+            color: #1d1d1f;
+            margin-bottom: 15px;
+        }
+
+        .implications-section {
+            max-width: 980px;
+            margin: 80px auto;
+            padding: 0 20px;
+        }
+
+        .implications-section h2 {
+            font-size: 48px;
+            line-height: 1.08349;
+            font-weight: 600;
+            letter-spacing: -0.003em;
+            margin-bottom: 40px;
+            color: #1d1d1f;
+        }
+
+        .implication-card {
             background: #fff;
             padding: 40px;
-            margin-bottom: 12px;
+            margin-bottom: 20px;
             border-radius: 18px;
             transition: all 0.3s ease;
         }
-        
-        .risk-item:hover {
+
+        .implication-card:hover {
             transform: translateY(-4px);
             box-shadow: 0 4px 20px rgba(0,0,0,0.08);
         }
-        
-        .risk-item h4 {
+
+        .implication-card h3 {
             font-size: 28px;
             line-height: 1.14286;
             font-weight: 600;
             letter-spacing: 0.007em;
             color: #1d1d1f;
-            margin-bottom: 12px;
+            margin-bottom: 15px;
         }
-        
-        .risk-item p {
-            font-size: 17px;
-            line-height: 1.47059;
-            font-weight: 400;
-            letter-spacing: -0.022em;
-            color: #6e6e73;
-        }
-        
-        .who-guidelines {
-            max-width: 980px;
-            margin: 80px auto;
-            padding: 0 20px;
-        }
-        
-        .who-guidelines h2 {
-            font-size: 48px;
-            line-height: 1.08349;
-            font-weight: 600;
-            letter-spacing: -0.003em;
-            margin-bottom: 40px;
-            color: #1d1d1f;
-        }
-        
-        .guideline {
-            background: #fff;
-            padding: 30px;
-            margin-bottom: 12px;
-            border-radius: 18px;
-            font-size: 17px;
-            line-height: 1.47059;
-            font-weight: 400;
-            letter-spacing: -0.022em;
-            color: #6e6e73;
-            transition: all 0.3s ease;
-        }
-        
-        .guideline:hover {
-            transform: translateX(8px);
-        }
-        
-        .guideline strong {
-            color: #1d1d1f;
-            font-weight: 600;
-            display: block;
-            margin-bottom: 8px;
-            font-size: 21px;
-        }
-        
-        .questions {
+
+        .references {
             background: #000;
             padding: 80px 20px;
-            margin-bottom: 0;
+            color: #f5f5f7;
         }
-        
-        .questions-container {
+
+        .references-container {
             max-width: 980px;
             margin: 0 auto;
         }
-        
-        .questions h2 {
+
+        .references h2 {
             font-size: 48px;
             line-height: 1.08349;
             font-weight: 600;
@@ -275,73 +289,26 @@
             margin-bottom: 40px;
             color: #f5f5f7;
         }
-        
-        .question {
-            background: rgba(255,255,255,0.06);
-            padding: 30px;
-            margin-bottom: 12px;
-            border-radius: 18px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-        }
-        
-        .question:hover {
-            background: rgba(255,255,255,0.1);
-            transform: translateX(8px);
-        }
-        
-        .question h4 {
-            font-size: 24px;
-            line-height: 1.16667;
-            font-weight: 600;
-            letter-spacing: 0.009em;
-            color: #f5f5f7;
-            margin-bottom: 12px;
-        }
-        
-        .question p {
+
+        .reference-item {
+            padding: 20px 0;
+            border-bottom: 1px solid #424245;
             font-size: 17px;
             line-height: 1.47059;
-            font-weight: 400;
-            letter-spacing: -0.022em;
             color: #a1a1a6;
         }
-        
-        .sources {
-            max-width: 980px;
-            margin: 80px auto 80px;
-            padding: 0 20px;
-        }
-        
-        .sources h2 {
-            font-size: 48px;
-            line-height: 1.08349;
-            font-weight: 600;
-            letter-spacing: -0.003em;
-            margin-bottom: 40px;
-            color: #1d1d1f;
-        }
-        
-        .sources a {
-            color: #06c;
-            text-decoration: none;
-            display: block;
-            padding: 20px 0;
-            font-size: 17px;
-            line-height: 1.47059;
-            font-weight: 400;
-            letter-spacing: -0.022em;
-            border-bottom: 1px solid #d2d2d7;
-            transition: color 0.3s ease;
-        }
-        
-        .sources a:hover {
-            color: #0077ed;
-        }
-        
-        .sources a:last-child {
+
+        .reference-item:last-child {
             border-bottom: none;
+        }
+
+        .reference-item a {
+            color: #2997ff;
+            text-decoration: none;
+        }
+
+        .reference-item a:hover {
+            text-decoration: underline;
         }
         
         @media (max-width: 1068px) {
@@ -358,7 +325,7 @@
                 font-size: 24px;
             }
             
-            .intro h2, .big-risks h2, .who-guidelines h2, .questions h2, .sources h2 {
+            .intro h2, .science-section h2, .implications-section h2, .references h2 {
                 font-size: 40px;
             }
         }
@@ -376,7 +343,7 @@
                 font-size: 17px;
             }
             
-            .intro h2, .big-risks h2, .who-guidelines h2, .questions h2, .sources h2 {
+            .intro h2, .science-section h2, .implications-section h2, .references h2 {
                 font-size: 32px;
             }
             
@@ -402,7 +369,7 @@
         <div class="intro">
             <h2>What is Personal Genomics Testing?</h2>
             <p>Personal genomics testing allows individuals to learn about their genetic makeup through companies like 23andMe, AncestryDNA, and MyHeritage. By sending in a saliva sample, you can discover:</p>
-            <ul style="margin: 15px 0 15px 30px;">
+            <ul>
                 <li>Your ethnic background and ancestry</li>
                 <li>Potential health risks and genetic conditions</li>
                 <li>Traits like eye color, taste preferences, and more</li>
@@ -437,98 +404,94 @@
             </div>
         </div>
 
-        <div class="big-risks">
-            <div class="big-risks-container">
-                <h2>5 Biggest Risks of Sharing Your DNA</h2>
-            
-            <div class="risk-item">
-                <h4>1. Data Breaches and Hacking</h4>
-                <p>Genetic databases are prime targets for hackers. In 2018, MyHeritage announced that 92 million user accounts were compromised. Unlike passwords, you can't change your DNA if it's stolen.</p>
-            </div>
-            
-            <div class="risk-item">
-                <h4>2. Law Enforcement Access</h4>
-                <p>Police have used DNA databases to solve crimes, which sounds positive until you realize your genetic data could implicate you or your relatives in investigations—even if you're innocent. The Golden State Killer case demonstrated how familial DNA can be used without consent.</p>
-            </div>
-            
-            <div class="risk-item">
-                <h4>3. Insurance and Employment Discrimination</h4>
-                <p>While some protections exist, genetic information could potentially be used to deny coverage or employment. Companies might consider you a higher risk based on your genetic predispositions, affecting life insurance, long-term care, and disability insurance.</p>
-            </div>
-            
-            <div class="risk-item">
-                <h4>4. Family Secrets and Unexpected Discoveries</h4>
-                <p>DNA tests have revealed unexpected paternity, unknown siblings, and family secrets that some people weren't prepared to discover. These revelations can cause emotional trauma and damage family relationships.</p>
-            </div>
-            
-            <div class="risk-item">
-                <h4>5. Loss of Anonymity for Your Entire Family</h4>
-                <p>When you share your DNA, you're not just exposing yourself—you're revealing information about your parents, siblings, children, and extended family members who never consented to have their genetic information in a database.</p>
-            </div>
+        <div class="science-section">
+            <div class="science-container">
+                <h2>The Science Behind Genomics Testing</h2>
+                
+                <h3>The Problem Being Addressed</h3>
+                <p>Traditional genetic testing required expensive laboratory procedures, physician referrals, and specialized genetic counseling, creating barriers to accessing potentially life-saving genetic information. Direct-to-consumer (DTC) genetic testing emerged as a solution to democratize access to <span class="science-term">genomic data</span>, enabling individuals to proactively understand their health risks without medical gatekeepers <span class="citation">(Tandy-Connor et al., 2018)</span>.</p>
+
+                <h3>How the Technology Works</h3>
+                
+                <div class="process-card">
+                    <h4>Step 1: DNA Extraction and Amplification</h4>
+                    <p>Upon receiving a saliva sample, laboratories extract <span class="science-term">deoxyribonucleic acid (DNA)</span> containing the individual's complete <span class="science-term">genome</span>—approximately 3 billion <span class="science-term">base pairs</span> of genetic information. Using <span class="science-term">polymerase chain reaction (PCR)</span>, scientists amplify specific regions to generate sufficient genetic material for analysis <span class="citation">(National Human Genome Research Institute, 2024)</span>.</p>
+                </div>
+
+                <div class="process-card">
+                    <h4>Step 2: Genotyping via SNP Arrays</h4>
+                    <p>Rather than sequencing the entire genome, most DTC companies employ <span class="science-term">DNA microarray chips</span> that test for approximately 600,000 to 700,000 specific <span class="science-term">single nucleotide polymorphisms (SNPs)</span>. These represent common variations where a single <span class="science-term">nucleotide</span> (A, T, G, or C) differs between individuals. The microarray uses <span class="science-term">fluorescent probes</span> that bind to specific DNA sequences <span class="citation">(Mittelman, 2019)</span>.</p>
+                </div>
+
+                <div class="process-card">
+                    <h4>Step 3: Bioinformatic Analysis</h4>
+                    <p>Sophisticated algorithms compare the individual's <span class="science-term">genotype</span> against reference databases. By identifying patterns of <span class="science-term">allele frequencies</span> and <span class="science-term">haplotypes</span>, the software generates risk assessments based on <span class="science-term">genome-wide association studies (GWAS)</span> that have linked specific variants to diseases and traits <span class="citation">(Regalado, 2019)</span>.</p>
+                </div>
+
+                <div class="process-card">
+                    <h4>Step 4: Ancestry Determination</h4>
+                    <p>Ancestry analysis relies on identifying population-specific genetic markers and comparing chromosomal segments against reference populations from different geographic regions. The algorithms calculate ethnicity percentages through <span class="science-term">statistical modeling</span> of <span class="science-term">genetic recombination</span> patterns over generations.</p>
+                </div>
             </div>
         </div>
 
-        <div class="who-guidelines">
-            <h2>WHO's New Ethical Guidelines (2024)</h2>
-            <p>In November 2024, the World Health Organization released principles for ethical human genomic data collection and sharing, recognizing the growing concerns:</p>
-            
-            <div class="guideline">
-                <strong>Individual Control:</strong> People should have meaningful control over their genomic data, including the right to withdraw consent.
+        <div class="implications-section">
+            <h2>Evaluating the Implications</h2>
+
+            <div class="implication-card">
+                <h3>Medical and Health Implications</h3>
+                <p><strong>Benefits:</strong> Consumer genomics enables <span class="science-term">predictive medicine</span>. By identifying <span class="science-term">genetic predispositions</span> to conditions like <span class="science-term">BRCA1/BRCA2 mutations</span> (breast cancer risk) or <span class="science-term">APOE ε4 alleles</span> (Alzheimer's disease link), individuals can implement preventive strategies and pursue early screening <span class="citation">(Wagner, 2018)</span>.</p>
+                <p><strong>Limitations:</strong> Most diseases involve <span class="science-term">polygenic inheritance</span>—complex interactions between multiple genes and environmental factors. The <span class="science-term">penetrance</span> (likelihood a variant causes disease) varies significantly. Studies document <span class="context-term">false positive rates up to 40%</span> in some DTC tests, potentially causing unnecessary anxiety <span class="citation">(Tandy-Connor et al., 2018)</span>.</p>
             </div>
-            
-            <div class="guideline">
-                <strong>Transparency:</strong> Companies must be clear about how data is used, stored, and shared with third parties.
+
+            <div class="implication-card">
+                <h3>Privacy and Data Security Implications</h3>
+                <p>Unlike passwords, <span class="science-term">genetic information is immutable</span>—once compromised, it cannot be changed. The <span class="context-term">2018 MyHeritage data breach exposed 92 million user accounts</span>, demonstrating vulnerability to <span class="context-term">cyberattacks</span> <span class="citation">(Hazel & Slobogin, 2018)</span>. Because approximately 50% of DNA is shared with first-degree relatives, one person's genetic data indirectly exposes entire family networks.</p>
+                <p><span class="science-term">Forensic genetic genealogy</span> allows law enforcement to upload crime scene DNA to public databases, identifying suspects through <span class="science-term">familial DNA matching</span>. While this solved the <span class="context-term">Golden State Killer case</span>, critics argue it subjects innocent relatives to genetic surveillance <span class="citation">(Guerrini et al., 2018)</span>.</p>
             </div>
-            
-            <div class="guideline">
-                <strong>Protection from Discrimination:</strong> Genomic data should not be used to discriminate against individuals in employment, insurance, or social settings.
+
+            <div class="implication-card">
+                <h3>Ethical and Social Implications</h3>
+                <p>Despite the <span class="context-term">Genetic Information Nondiscrimination Act (GINA) of 2008</span> in the United States, significant protection gaps remain. GINA does not cover life insurance, disability insurance, or long-term care insurance, allowing these industries to potentially use <span class="science-term">genetic risk profiles</span> in decisions <span class="citation">(Wagner, 2018)</span>.</p>
+                <p>The complexity of results exceeds most consumers' understanding of <span class="science-term">Mendelian inheritance</span>, <span class="science-term">epigenetics</span>, and <span class="science-term">gene-environment interactions</span>. The <span class="context-term">World Health Organization's 2024 ethical guidelines</span> emphasize that meaningful consent requires comprehension of how data will be stored and shared <span class="citation">(World Health Organization, 2024)</span>.</p>
+                <p>Genetic testing can reveal <span class="context-term">non-paternity events</span> or previously unknown siblings. Studies indicate approximately <span class="context-term">7-10% of users discover unanticipated family relationships</span> causing significant emotional distress <span class="citation">(Guerrini et al., 2018)</span>.</p>
             </div>
-            
-            <div class="guideline">
-                <strong>Data Security:</strong> Robust cybersecurity measures must protect against breaches and unauthorized access.
-            </div>
-            
-            <div class="guideline">
-                <strong>Benefit Sharing:</strong> If companies profit from research using your DNA, there should be mechanisms for community benefit.
+
+            <div class="implication-card">
+                <h3>Commercial and Research Implications</h3>
+                <p>DTC genetic companies increasingly monetize databases by selling <span class="science-term">de-identified genomic data</span> to pharmaceutical companies. While this accelerates drug discovery through <span class="science-term">pharmacogenomic studies</span>, it raises questions about benefit-sharing—whether individuals whose data contributes to profitable drugs should receive compensation <span class="citation">(Mittelman, 2019)</span>.</p>
+                <p>Most companies' terms grant them perpetual licenses to use customers' genetic data for research, even after data deletion requests. This creates disconnect between privacy expectations and the reality of <span class="context-term">genetic data commodification</span> <span class="citation">(Hazel & Slobogin, 2018)</span>.</p>
             </div>
         </div>
 
-        <div class="questions">
-            <div class="questions-container">
-                <h2>Questions to Ask Before Testing</h2>
-            
-            <div class="question">
-                <h4>Who owns my genetic data?</h4>
-                <p>Read the fine print. Many companies claim ownership or rights to use your data for research and commercial purposes.</p>
+        <div class="references">
+            <div class="references-container">
+                <h2>References</h2>
+                <div class="reference-item">
+                    Guerrini, C. J., Robinson, J. O., Petersen, D., & McGuire, A. L. (2018). Should police have access to genetic genealogy databases? Capturing the Golden State Killer and other criminals using a controversial new forensic technique. <em>PLOS Biology</em>, 16(10), e2006906. <a href="https://doi.org/10.1371/journal.pbio.2006906" target="_blank">https://doi.org/10.1371/journal.pbio.2006906</a>
+                </div>
+                <div class="reference-item">
+                    Hazel, J. W., & Slobogin, C. (2018). Who knows what, and when?: A survey of the privacy policies proffered by U.S. direct-to-consumer genetic testing companies. <em>Cornell Journal of Law and Public Policy</em>, 28(1), 35-66.
+                </div>
+                <div class="reference-item">
+                    Mittelman, D. (2019). Consumer genomics will change your life, whether you get tested or not. <em>Genome Biology</em>, 20(1), 214. <a href="https://doi.org/10.1186/s13059-019-1819-3" target="_blank">https://doi.org/10.1186/s13059-019-1819-3</a>
+                </div>
+                <div class="reference-item">
+                    National Human Genome Research Institute. (2024). DNA microarray technology. National Institutes of Health. <a href="https://www.genome.gov/genetics-glossary/DNA-Microarray" target="_blank">https://www.genome.gov/genetics-glossary/DNA-Microarray</a>
+                </div>
+                <div class="reference-item">
+                    Regalado, A. (2019). More than 26 million people have taken an at-home ancestry test. <em>MIT Technology Review</em>. <a href="https://www.technologyreview.com/2019/02/11/103446/more-than-26-million-people-have-taken-an-at-home-ancestry-test/" target="_blank">https://www.technologyreview.com</a>
+                </div>
+                <div class="reference-item">
+                    Tandy-Connor, S., Guiltinan, J., Krempely, K., LaDuca, H., Reineke, P., Gutierrez, S., Gray, P., & Tippin Davis, B. (2018). False-positive results released by direct-to-consumer genetic tests highlight the importance of clinical confirmation testing. <em>Genetics in Medicine</em>, 20(12), 1515-1521. <a href="https://doi.org/10.1038/gim.2018.38" target="_blank">https://doi.org/10.1038/gim.2018.38</a>
+                </div>
+                <div class="reference-item">
+                    Wagner, J. K. (2018). 5 biggest risks of sharing your DNA with consumer genetic-testing companies. <em>CNBC</em>. <a href="https://www.cnbc.com/2018/06/16/5-biggest-risks-of-sharing-dna-with-consumer-genetic-testing-companies.html" target="_blank">https://www.cnbc.com</a>
+                </div>
+                <div class="reference-item">
+                    World Health Organization. (2024). WHO releases new principles for ethical human genomic data collection and sharing. <a href="https://www.who.int/news/item/20-11-2024-who-releases-new-principles-for-ethical-human-genomic-data-collection-and-sharing" target="_blank">https://www.who.int</a>
+                </div>
             </div>
-            
-            <div class="question">
-                <h4>Can I delete my data later?</h4>
-                <p>Some companies allow deletion, but it may not remove data already shared with third parties or used in research.</p>
-            </div>
-            
-            <div class="question">
-                <h4>Who can access my information?</h4>
-                <p>Understand the company's policies on sharing with researchers, pharmaceutical companies, and law enforcement.</p>
-            </div>
-            
-            <div class="question">
-                <h4>How secure is the database?</h4>
-                <p>Ask about encryption, cybersecurity measures, and their history of data breaches.</p>
-            </div>
-            
-            <div class="question">
-                <h4>What happens if the company is sold?</h4>
-                <p>Your data could be transferred to a new owner with different privacy policies and practices.</p>
-            </div>
-            </div>
-        </div>
-
-        <div class="sources">
-            <h2>Learn More</h2>
-            <a href="https://www.cnbc.com/2018/06/16/5-biggest-risks-of-sharing-dna-with-consumer-genetic-testing-companies.html" target="_blank">CNBC: 5 Biggest Risks of Sharing DNA with Consumer Genetic Testing Companies</a>
-            <a href="https://www.who.int/news/item/20-11-2024-who-releases-new-principles-for-ethical-human-genomic-data-collection-and-sharing" target="_blank">WHO: New Principles for Ethical Human Genomic Data Collection and Sharing (2024)</a>
-            <a href="https://www.bbc.com/news/technology-25100878" target="_blank">BBC: The Privacy Concerns Around DNA Testing</a>
         </div>
     </div>
 </body>
