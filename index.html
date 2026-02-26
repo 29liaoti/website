@@ -1,799 +1,535 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Genetic Tools Against Viral Outbreaks</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --navy: #0a1628;
-    --deep: #0d1f3c;
-    --teal: #00c9b1;
-    --sky: #4fc3f7;
-    --accent: #ff6b6b;
-    --gold: #ffd166;
-    --text: #e8f4f8;
-    --muted: #8fadbf;
-    --card: rgba(255,255,255,0.05);
-    --border: rgba(0,201,177,0.2);
-  }
-
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  body {
-    background: var(--navy);
-    color: var(--text);
-    font-family: 'DM Sans', sans-serif;
-    overflow-x: hidden;
-  }
-
-  /* ── GOOGLE SITES TOP BAR ── */
-  .sites-bar {
-    background: #fff;
-    display: flex;
-    align-items: center;
-    padding: 10px 18px;
-    gap: 12px;
-    border-bottom: 1px solid #ddd;
-    font-family: 'DM Sans', sans-serif;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  }
-  .sites-bar img { height: 22px; }
-  .sites-logo {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 15px;
-    color: #444;
-    font-weight: 500;
-  }
-  .sites-logo-g {
-    font-size: 18px;
-    font-weight: 700;
-    color: #4285F4;
-  }
-  .sites-logo-s { color: #444; }
-  .sites-bar-right {
-    margin-left: auto;
-    display: flex;
-    gap: 8px;
-    align-items: center;
-  }
-  .sites-btn {
-    background: #1a73e8;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    padding: 6px 14px;
-    font-size: 13px;
-    cursor: pointer;
-    font-family: 'DM Sans', sans-serif;
-  }
-  .sites-btn.ghost {
-    background: transparent;
-    color: #1a73e8;
-    border: 1px solid #1a73e8;
-  }
-  .sites-sep { width: 1px; height: 24px; background: #ddd; }
-
-  /* ── SITE NAV ── */
-  .site-nav {
-    background: var(--deep);
-    border-bottom: 1px solid var(--border);
-    display: flex;
-    align-items: center;
-    padding: 0 40px;
-    gap: 0;
-  }
-  .site-nav a {
-    color: var(--muted);
-    text-decoration: none;
-    padding: 16px 18px;
-    font-size: 13px;
-    font-weight: 500;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    border-bottom: 3px solid transparent;
-    transition: all 0.2s;
-  }
-  .site-nav a:hover, .site-nav a.active {
-    color: var(--teal);
-    border-bottom-color: var(--teal);
-  }
-
-  /* ── HERO ── */
-  .hero {
-    position: relative;
-    min-height: 92vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    background: linear-gradient(135deg, #0a1628 0%, #0d2a4a 50%, #0a1628 100%);
-  }
-  .hero-bg {
-    position: absolute;
-    inset: 0;
-    background: 
-      radial-gradient(ellipse 80% 60% at 70% 50%, rgba(0,201,177,0.08) 0%, transparent 70%),
-      radial-gradient(ellipse 50% 80% at 20% 80%, rgba(79,195,247,0.06) 0%, transparent 60%);
-  }
-  .dna-helix {
-    position: absolute;
-    right: 8%;
-    top: 50%;
-    transform: translateY(-50%);
-    opacity: 0.18;
-    font-size: 180px;
-    line-height: 1;
-    letter-spacing: -10px;
-    font-family: 'Space Mono', monospace;
-    color: var(--teal);
-    writing-mode: vertical-rl;
-    animation: dnaScroll 20s linear infinite;
-  }
-  @keyframes dnaScroll {
-    from { transform: translateY(-50%) translateX(0); }
-    to { transform: translateY(-60%) translateX(0); }
-  }
-  .grid-overlay {
-    position: absolute;
-    inset: 0;
-    background-image: 
-      linear-gradient(rgba(0,201,177,0.04) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(0,201,177,0.04) 1px, transparent 1px);
-    background-size: 60px 60px;
-  }
-  .hero-content {
-    position: relative;
-    z-index: 2;
-    max-width: 820px;
-    padding: 60px 40px;
-    text-align: center;
-  }
-  .hero-tag {
-    display: inline-block;
-    background: rgba(0,201,177,0.1);
-    border: 1px solid rgba(0,201,177,0.3);
-    color: var(--teal);
-    font-family: 'Space Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    padding: 6px 16px;
-    border-radius: 2px;
-    margin-bottom: 28px;
-  }
-  .hero h1 {
-    font-family: 'DM Serif Display', serif;
-    font-size: clamp(2.8rem, 6vw, 5rem);
-    line-height: 1.1;
-    color: #fff;
-    margin-bottom: 24px;
-  }
-  .hero h1 em {
-    font-style: italic;
-    color: var(--teal);
-  }
-  .hero-sub {
-    font-size: 1.15rem;
-    color: var(--muted);
-    line-height: 1.7;
-    max-width: 600px;
-    margin: 0 auto 40px;
-  }
-  .hero-pills {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    justify-content: center;
-    margin-bottom: 44px;
-  }
-  .pill {
-    background: rgba(255,255,255,0.06);
-    border: 1px solid rgba(255,255,255,0.12);
-    color: var(--text);
-    padding: 8px 18px;
-    border-radius: 100px;
-    font-size: 13px;
-    font-weight: 500;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .pill-dot { width: 8px; height: 8px; border-radius: 50%; }
-  .dot-teal { background: var(--teal); }
-  .dot-sky { background: var(--sky); }
-  .dot-gold { background: var(--gold); }
-  .dot-accent { background: var(--accent); }
-  .scroll-hint {
-    color: var(--muted);
-    font-size: 12px;
-    font-family: 'Space Mono', monospace;
-    letter-spacing: 0.1em;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-  }
-  .scroll-hint::after {
-    content: '↓';
-    animation: bounce 1.4s ease infinite;
-    display: inline-block;
-  }
-  @keyframes bounce {
-    0%,100% { transform: translateY(0); }
-    50% { transform: translateY(5px); }
-  }
-
-  /* ── PROBLEM SECTION ── */
-  .section { padding: 90px 40px; max-width: 1200px; margin: 0 auto; }
-  .section-label {
-    font-family: 'Space Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--teal);
-    margin-bottom: 14px;
-  }
-  .section h2 {
-    font-family: 'DM Serif Display', serif;
-    font-size: clamp(2rem, 4vw, 3.2rem);
-    line-height: 1.2;
-    margin-bottom: 20px;
-    color: #fff;
-  }
-  .problem-block {
-    background: linear-gradient(135deg, rgba(255,107,107,0.08), rgba(255,107,107,0.02));
-    border: 1px solid rgba(255,107,107,0.25);
-    border-left: 4px solid var(--accent);
-    border-radius: 8px;
-    padding: 36px 40px;
-    margin: 40px 0;
-  }
-  .problem-block h3 {
-    font-family: 'DM Serif Display', serif;
-    font-size: 1.5rem;
-    color: var(--accent);
-    margin-bottom: 14px;
-  }
-  .problem-block p {
-    color: var(--muted);
-    line-height: 1.8;
-    font-size: 1rem;
-  }
-  .stats-row {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
-    margin-top: 50px;
-  }
-  .stat-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 30px 24px;
-    text-align: center;
-    transition: transform 0.2s, border-color 0.2s;
-  }
-  .stat-card:hover { transform: translateY(-4px); border-color: var(--teal); }
-  .stat-num {
-    font-family: 'DM Serif Display', serif;
-    font-size: 3rem;
-    color: var(--teal);
-    line-height: 1;
-  }
-  .stat-label { color: var(--muted); font-size: 13px; margin-top: 8px; line-height: 1.5; }
-
-  /* ── DIVIDER BAND ── */
-  .band {
-    background: linear-gradient(90deg, var(--teal), var(--sky), var(--teal));
-    padding: 28px 40px;
-    text-align: center;
-    font-family: 'DM Serif Display', serif;
-    font-size: 1.5rem;
-    font-style: italic;
-    color: var(--navy);
-  }
-
-  /* ── SOLUTION SECTION ── */
-  .solutions-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 28px;
-    margin-top: 50px;
-  }
-  .sol-card {
-    background: rgba(255,255,255,0.03);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 36px;
-    position: relative;
-    overflow: hidden;
-    transition: all 0.25s;
-  }
-  .sol-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 3px;
-  }
-  .sol-card:nth-child(1)::before { background: var(--teal); }
-  .sol-card:nth-child(2)::before { background: var(--sky); }
-  .sol-card:nth-child(3)::before { background: var(--gold); }
-  .sol-card:nth-child(4)::before { background: var(--accent); }
-  .sol-card:hover { transform: translateY(-5px); background: rgba(255,255,255,0.06); border-color: rgba(0,201,177,0.4); }
-  .sol-icon {
-    font-size: 2.4rem;
-    margin-bottom: 16px;
-    display: block;
-  }
-  .sol-tag {
-    font-family: 'Space Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    padding: 3px 10px;
-    border-radius: 2px;
-    margin-bottom: 14px;
-    display: inline-block;
-  }
-  .tag-teal { background: rgba(0,201,177,0.12); color: var(--teal); }
-  .tag-sky { background: rgba(79,195,247,0.12); color: var(--sky); }
-  .tag-gold { background: rgba(255,209,102,0.12); color: var(--gold); }
-  .tag-accent { background: rgba(255,107,107,0.12); color: var(--accent); }
-  .sol-card h3 {
-    font-family: 'DM Serif Display', serif;
-    font-size: 1.6rem;
-    color: #fff;
-    margin-bottom: 12px;
-  }
-  .sol-card p { color: var(--muted); line-height: 1.75; font-size: 0.95rem; }
-  .sol-card ul {
-    list-style: none;
-    margin-top: 16px;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-  .sol-card ul li {
-    color: var(--muted);
-    font-size: 0.9rem;
-    padding-left: 20px;
-    position: relative;
-    line-height: 1.5;
-  }
-  .sol-card ul li::before {
-    content: '→';
-    position: absolute;
-    left: 0;
-    color: var(--teal);
-    font-size: 0.85rem;
-  }
-
-  /* ── HOW IT WORKS ── */
-  .full-bg { background: rgba(0,201,177,0.02); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-  .timeline {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-    margin-top: 50px;
-    position: relative;
-  }
-  .timeline::before {
-    content: '';
-    position: absolute;
-    left: 32px;
-    top: 0; bottom: 0;
-    width: 2px;
-    background: linear-gradient(to bottom, var(--teal), var(--sky), var(--gold), var(--accent));
-  }
-  .tl-item {
-    display: flex;
-    gap: 32px;
-    padding: 32px 0 32px 80px;
-    position: relative;
-  }
-  .tl-dot {
-    position: absolute;
-    left: 20px;
-    top: 36px;
-    width: 26px; height: 26px;
-    border-radius: 50%;
-    border: 2px solid;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Space Mono', monospace;
-    font-size: 11px;
-    font-weight: 700;
-    background: var(--navy);
-  }
-  .tl-item:nth-child(1) .tl-dot { border-color: var(--teal); color: var(--teal); }
-  .tl-item:nth-child(2) .tl-dot { border-color: var(--sky); color: var(--sky); }
-  .tl-item:nth-child(3) .tl-dot { border-color: var(--gold); color: var(--gold); }
-  .tl-item:nth-child(4) .tl-dot { border-color: var(--accent); color: var(--accent); }
-  .tl-body h4 {
-    font-family: 'DM Serif Display', serif;
-    font-size: 1.3rem;
-    color: #fff;
-    margin-bottom: 8px;
-  }
-  .tl-body p { color: var(--muted); line-height: 1.75; font-size: 0.95rem; max-width: 700px; }
-
-  /* ── COMPARISON TABLE ── */
-  .table-wrap { overflow-x: auto; margin-top: 40px; }
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 14px;
-  }
-  th {
-    background: rgba(0,201,177,0.08);
-    border: 1px solid var(--border);
-    padding: 14px 18px;
-    text-align: left;
-    font-family: 'Space Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--teal);
-    font-weight: 400;
-  }
-  td {
-    border: 1px solid rgba(255,255,255,0.06);
-    padding: 14px 18px;
-    color: var(--muted);
-    vertical-align: top;
-    line-height: 1.6;
-  }
-  tr:hover td { background: rgba(255,255,255,0.03); }
-  td:first-child { color: var(--text); font-weight: 500; }
-  .check { color: var(--teal); font-weight: 700; }
-  .partial { color: var(--gold); }
-
-  /* ── CTA ── */
-  .cta-section {
-    background: linear-gradient(135deg, rgba(0,201,177,0.08) 0%, rgba(79,195,247,0.05) 100%);
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-    padding: 90px 40px;
-    text-align: center;
-  }
-  .cta-section h2 {
-    font-family: 'DM Serif Display', serif;
-    font-size: clamp(2rem, 4vw, 3rem);
-    color: #fff;
-    margin-bottom: 16px;
-  }
-  .cta-section p { color: var(--muted); font-size: 1.05rem; max-width: 560px; margin: 0 auto 36px; line-height: 1.7; }
-  .cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
-  .btn-primary {
-    background: var(--teal);
-    color: var(--navy);
-    border: none;
-    padding: 14px 32px;
-    border-radius: 4px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 14px;
-    font-weight: 600;
-    cursor: pointer;
-    letter-spacing: 0.02em;
-    transition: opacity 0.2s;
-  }
-  .btn-primary:hover { opacity: 0.85; }
-  .btn-outline {
-    background: transparent;
-    color: var(--teal);
-    border: 1px solid var(--teal);
-    padding: 14px 32px;
-    border-radius: 4px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 14px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.2s;
-  }
-  .btn-outline:hover { background: rgba(0,201,177,0.08); }
-
-  /* ── FOOTER ── */
-  footer {
-    background: #060e1c;
-    border-top: 1px solid rgba(255,255,255,0.06);
-    padding: 40px;
-    text-align: center;
-    font-size: 13px;
-    color: rgba(255,255,255,0.25);
-    font-family: 'Space Mono', monospace;
-  }
-
-  /* ── RESPONSIVE ── */
-  @media (max-width: 768px) {
-    .solutions-grid { grid-template-columns: 1fr; }
-    .stats-row { grid-template-columns: 1fr; }
-    .hero h1 { font-size: 2.4rem; }
-    .site-nav { display: none; }
-    .timeline::before { left: 16px; }
-    .tl-item { padding-left: 52px; }
-    .tl-dot { left: 4px; }
-    .section { padding: 60px 24px; }
-  }
-
-  /* ── ENTRY ANIMATIONS ── */
-  .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
-  .fade-in.visible { opacity: 1; transform: translateY(0); }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Genomics Testing: Know Before You Spit</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.47059;
+            font-weight: 400;
+            letter-spacing: -0.022em;
+            color: #1d1d1f;
+            background: #fbfbfd;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        .container {
+            max-width: 100%;
+            margin: 0 auto;
+        }
+        
+        header {
+            background: #000;
+            color: #f5f5f7;
+            padding: 80px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        h1 {
+            font-size: 56px;
+            line-height: 1.07143;
+            font-weight: 600;
+            letter-spacing: -0.005em;
+            margin-bottom: 6px;
+            color: #f5f5f7;
+        }
+        
+        .subtitle {
+            font-size: 28px;
+            line-height: 1.14286;
+            font-weight: 400;
+            letter-spacing: 0.007em;
+            color: #a1a1a6;
+            margin-bottom: 20px;
+        }
+        
+        .dna-icon {
+            font-size: 80px;
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+        
+        header p {
+            font-size: 21px;
+            line-height: 1.381;
+            font-weight: 400;
+            letter-spacing: 0.011em;
+            color: #a1a1a6;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .intro {
+            max-width: 980px;
+            margin: 80px auto;
+            padding: 0 20px;
+        }
+        
+        .intro h2 {
+            font-size: 48px;
+            line-height: 1.08349;
+            font-weight: 600;
+            letter-spacing: -0.003em;
+            margin-bottom: 25px;
+            color: #1d1d1f;
+        }
+        
+        .intro p, .intro ul {
+            font-size: 21px;
+            line-height: 1.381;
+            font-weight: 400;
+            letter-spacing: 0.011em;
+            color: #6e6e73;
+        }
+        
+        .intro ul {
+            margin: 20px 0 20px 30px;
+        }
+        
+        .intro ul li {
+            margin: 10px 0;
+        }
+        
+        .benefits-risks {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            max-width: 1400px;
+            margin: 0 auto 80px;
+            padding: 0 20px;
+        }
+        
+        .card {
+            background: #fff;
+            padding: 60px 50px;
+            border-radius: 18px;
+            transition: transform 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: scale(1.02);
+        }
+        
+        .card h3 {
+            font-size: 40px;
+            line-height: 1.1;
+            font-weight: 600;
+            letter-spacing: 0em;
+            margin-bottom: 30px;
+        }
+        
+        .benefits h3 {
+            color: #06c;
+        }
+        
+        .risks h3 {
+            color: #1d1d1f;
+        }
+        
+        .card ul {
+            list-style: none;
+        }
+        
+        .card li {
+            padding: 12px 0;
+            font-size: 17px;
+            line-height: 1.47059;
+            font-weight: 400;
+            letter-spacing: -0.022em;
+            color: #6e6e73;
+        }
+        
+        .card li::before {
+            margin-right: 12px;
+            font-weight: 600;
+            font-size: 18px;
+        }
+        
+        .benefits li::before {
+            content: "✓";
+            color: #06c;
+        }
+        
+        .risks li::before {
+            content: "•";
+            color: #1d1d1f;
+        }
+        
+        .big-risks {
+            background: #f5f5f7;
+            padding: 80px 20px;
+            margin-bottom: 0;
+        }
+        
+        .big-risks h2 {
+            font-size: 48px;
+            line-height: 1.08349;
+            font-weight: 600;
+            letter-spacing: -0.003em;
+            margin-bottom: 60px;
+            text-align: center;
+            color: #1d1d1f;
+        }
+        
+        .big-risks-container {
+            max-width: 980px;
+            margin: 0 auto;
+        }
+        
+        .risk-item {
+            background: #fff;
+            padding: 40px;
+            margin-bottom: 12px;
+            border-radius: 18px;
+            transition: all 0.3s ease;
+        }
+        
+        .risk-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+        
+        .risk-item h4 {
+            font-size: 28px;
+            line-height: 1.14286;
+            font-weight: 600;
+            letter-spacing: 0.007em;
+            color: #1d1d1f;
+            margin-bottom: 12px;
+        }
+        
+        .risk-item p {
+            font-size: 17px;
+            line-height: 1.47059;
+            font-weight: 400;
+            letter-spacing: -0.022em;
+            color: #6e6e73;
+        }
+        
+        .who-guidelines {
+            max-width: 980px;
+            margin: 80px auto;
+            padding: 0 20px;
+        }
+        
+        .who-guidelines h2 {
+            font-size: 48px;
+            line-height: 1.08349;
+            font-weight: 600;
+            letter-spacing: -0.003em;
+            margin-bottom: 40px;
+            color: #1d1d1f;
+        }
+        
+        .guideline {
+            background: #fff;
+            padding: 30px;
+            margin-bottom: 12px;
+            border-radius: 18px;
+            font-size: 17px;
+            line-height: 1.47059;
+            font-weight: 400;
+            letter-spacing: -0.022em;
+            color: #6e6e73;
+            transition: all 0.3s ease;
+        }
+        
+        .guideline:hover {
+            transform: translateX(8px);
+        }
+        
+        .guideline strong {
+            color: #1d1d1f;
+            font-weight: 600;
+            display: block;
+            margin-bottom: 8px;
+            font-size: 21px;
+        }
+        
+        .questions {
+            background: #000;
+            padding: 80px 20px;
+            margin-bottom: 0;
+        }
+        
+        .questions-container {
+            max-width: 980px;
+            margin: 0 auto;
+        }
+        
+        .questions h2 {
+            font-size: 48px;
+            line-height: 1.08349;
+            font-weight: 600;
+            letter-spacing: -0.003em;
+            margin-bottom: 40px;
+            color: #f5f5f7;
+        }
+        
+        .question {
+            background: rgba(255,255,255,0.06);
+            padding: 30px;
+            margin-bottom: 12px;
+            border-radius: 18px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+        
+        .question:hover {
+            background: rgba(255,255,255,0.1);
+            transform: translateX(8px);
+        }
+        
+        .question h4 {
+            font-size: 24px;
+            line-height: 1.16667;
+            font-weight: 600;
+            letter-spacing: 0.009em;
+            color: #f5f5f7;
+            margin-bottom: 12px;
+        }
+        
+        .question p {
+            font-size: 17px;
+            line-height: 1.47059;
+            font-weight: 400;
+            letter-spacing: -0.022em;
+            color: #a1a1a6;
+        }
+        
+        .sources {
+            max-width: 980px;
+            margin: 80px auto 80px;
+            padding: 0 20px;
+        }
+        
+        .sources h2 {
+            font-size: 48px;
+            line-height: 1.08349;
+            font-weight: 600;
+            letter-spacing: -0.003em;
+            margin-bottom: 40px;
+            color: #1d1d1f;
+        }
+        
+        .sources a {
+            color: #06c;
+            text-decoration: none;
+            display: block;
+            padding: 20px 0;
+            font-size: 17px;
+            line-height: 1.47059;
+            font-weight: 400;
+            letter-spacing: -0.022em;
+            border-bottom: 1px solid #d2d2d7;
+            transition: color 0.3s ease;
+        }
+        
+        .sources a:hover {
+            color: #0077ed;
+        }
+        
+        .sources a:last-child {
+            border-bottom: none;
+        }
+        
+        @media (max-width: 1068px) {
+            .benefits-risks {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+            
+            h1 {
+                font-size: 44px;
+            }
+            
+            .subtitle {
+                font-size: 24px;
+            }
+            
+            .intro h2, .big-risks h2, .who-guidelines h2, .questions h2, .sources h2 {
+                font-size: 40px;
+            }
+        }
+        
+        @media (max-width: 734px) {
+            h1 {
+                font-size: 32px;
+            }
+            
+            .subtitle {
+                font-size: 19px;
+            }
+            
+            header p {
+                font-size: 17px;
+            }
+            
+            .intro h2, .big-risks h2, .who-guidelines h2, .questions h2, .sources h2 {
+                font-size: 32px;
+            }
+            
+            .card {
+                padding: 40px 30px;
+            }
+            
+            .card h3 {
+                font-size: 28px;
+            }
+        }
+    </style>
 </head>
 <body>
+    <div class="container">
+        <header>
+            <div class="dna-icon">🧬</div>
+            <h1>Personal Genomics Testing</h1>
+            <p class="subtitle">Understanding the Promise and Perils of DNA Testing Services</p>
+            <p>Services like 23andMe offer insights into your ancestry, health risks, and genetic traits. But what are you really giving up when you share your DNA?</p>
+        </header>
 
-<!-- Google Sites Top Chrome Bar -->
-<div class="sites-bar">
-  <div class="sites-logo">
-    <span style="font-size:22px; font-weight:700; color:#4285F4;">G</span>
-    <span style="color:#EA4335; font-weight:700; font-size:20px;">o</span>
-    <span style="color:#FBBC04; font-weight:700; font-size:20px;">o</span>
-    <span style="color:#4285F4; font-weight:700; font-size:20px;">g</span>
-    <span style="color:#34A853; font-weight:700; font-size:20px;">l</span>
-    <span style="color:#EA4335; font-weight:700; font-size:20px;">e</span>
-    <span style="color:#555; margin-left:4px; font-weight:400; font-size:15px;">Sites</span>
-  </div>
-  <span style="font-size:14px; color:#666; margin-left:20px;">GenomicShield.site</span>
-  <div class="sites-bar-right">
-    <button class="sites-btn ghost">Preview</button>
-    <div class="sites-sep"></div>
-    <button class="sites-btn">Publish</button>
-    <div style="width:32px; height:32px; background:#4285F4; border-radius:50%; display:flex; align-items:center; justify-content:center; color:#fff; font-size:13px; font-weight:600; margin-left:8px;">A</div>
-  </div>
-</div>
+        <div class="intro">
+            <h2>What is Personal Genomics Testing?</h2>
+            <p>Personal genomics testing allows individuals to learn about their genetic makeup through companies like 23andMe, AncestryDNA, and MyHeritage. By sending in a saliva sample, you can discover:</p>
+            <ul style="margin: 15px 0 15px 30px;">
+                <li>Your ethnic background and ancestry</li>
+                <li>Potential health risks and genetic conditions</li>
+                <li>Traits like eye color, taste preferences, and more</li>
+                <li>Relatives you never knew existed</li>
+            </ul>
+            <p>The industry has exploded in recent years, with millions of people sharing their most personal information: their DNA.</p>
+        </div>
 
-<!-- Site Navigation -->
-<nav class="site-nav">
-  <a href="#" class="active">Home</a>
-  <a href="#">The Problem</a>
-  <a href="#">Solutions</a>
-  <a href="#">Technologies</a>
-  <a href="#">How It Works</a>
-  <a href="#">Resources</a>
-</nav>
+        <div class="benefits-risks">
+            <div class="card benefits">
+                <h3>Why People Love It</h3>
+                <ul>
+                    <li>Discover your ethnic heritage and ancestry</li>
+                    <li>Connect with long-lost relatives</li>
+                    <li>Learn about potential health risks early</li>
+                    <li>Understand genetic traits and characteristics</li>
+                    <li>Contribute to scientific research</li>
+                    <li>Make informed medical decisions</li>
+                </ul>
+            </div>
+            
+            <div class="card risks">
+                <h3>The Hidden Concerns</h3>
+                <ul>
+                    <li>Your DNA data could be hacked or stolen</li>
+                    <li>Insurance companies might access your information</li>
+                    <li>Law enforcement can request your genetic data</li>
+                    <li>Family secrets may be unexpectedly revealed</li>
+                    <li>Your relatives' privacy is also compromised</li>
+                    <li>Data could be sold to third parties</li>
+                </ul>
+            </div>
+        </div>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-bg"></div>
-  <div class="grid-overlay"></div>
-  <div class="dna-helix">ATCGATCGATCGATCGATCG</div>
-  <div class="hero-content">
-    <div class="hero-tag">Genomics · Virology · Public Health</div>
-    <h1>Fighting Viral Outbreaks<br>with <em>Genetic Tools</em></h1>
-    <p class="hero-sub">From COVID-19 to the next pandemic threat — how DNA Sequencing, PCR Testing, mRNA Vaccines, and CRISPR are rewriting humanity's response to viral disease.</p>
-    <div class="hero-pills">
-      <span class="pill"><span class="pill-dot dot-teal"></span>DNA Sequencing</span>
-      <span class="pill"><span class="pill-dot dot-sky"></span>PCR Testing</span>
-      <span class="pill"><span class="pill-dot dot-gold"></span>mRNA Vaccines</span>
-      <span class="pill"><span class="pill-dot dot-accent"></span>CRISPR</span>
+        <div class="big-risks">
+            <div class="big-risks-container">
+                <h2>5 Biggest Risks of Sharing Your DNA</h2>
+            
+            <div class="risk-item">
+                <h4>1. Data Breaches and Hacking</h4>
+                <p>Genetic databases are prime targets for hackers. In 2018, MyHeritage announced that 92 million user accounts were compromised. Unlike passwords, you can't change your DNA if it's stolen.</p>
+            </div>
+            
+            <div class="risk-item">
+                <h4>2. Law Enforcement Access</h4>
+                <p>Police have used DNA databases to solve crimes, which sounds positive until you realize your genetic data could implicate you or your relatives in investigations—even if you're innocent. The Golden State Killer case demonstrated how familial DNA can be used without consent.</p>
+            </div>
+            
+            <div class="risk-item">
+                <h4>3. Insurance and Employment Discrimination</h4>
+                <p>While some protections exist, genetic information could potentially be used to deny coverage or employment. Companies might consider you a higher risk based on your genetic predispositions, affecting life insurance, long-term care, and disability insurance.</p>
+            </div>
+            
+            <div class="risk-item">
+                <h4>4. Family Secrets and Unexpected Discoveries</h4>
+                <p>DNA tests have revealed unexpected paternity, unknown siblings, and family secrets that some people weren't prepared to discover. These revelations can cause emotional trauma and damage family relationships.</p>
+            </div>
+            
+            <div class="risk-item">
+                <h4>5. Loss of Anonymity for Your Entire Family</h4>
+                <p>When you share your DNA, you're not just exposing yourself—you're revealing information about your parents, siblings, children, and extended family members who never consented to have their genetic information in a database.</p>
+            </div>
+            </div>
+        </div>
+
+        <div class="who-guidelines">
+            <h2>WHO's New Ethical Guidelines (2024)</h2>
+            <p>In November 2024, the World Health Organization released principles for ethical human genomic data collection and sharing, recognizing the growing concerns:</p>
+            
+            <div class="guideline">
+                <strong>Individual Control:</strong> People should have meaningful control over their genomic data, including the right to withdraw consent.
+            </div>
+            
+            <div class="guideline">
+                <strong>Transparency:</strong> Companies must be clear about how data is used, stored, and shared with third parties.
+            </div>
+            
+            <div class="guideline">
+                <strong>Protection from Discrimination:</strong> Genomic data should not be used to discriminate against individuals in employment, insurance, or social settings.
+            </div>
+            
+            <div class="guideline">
+                <strong>Data Security:</strong> Robust cybersecurity measures must protect against breaches and unauthorized access.
+            </div>
+            
+            <div class="guideline">
+                <strong>Benefit Sharing:</strong> If companies profit from research using your DNA, there should be mechanisms for community benefit.
+            </div>
+        </div>
+
+        <div class="questions">
+            <div class="questions-container">
+                <h2>Questions to Ask Before Testing</h2>
+            
+            <div class="question">
+                <h4>Who owns my genetic data?</h4>
+                <p>Read the fine print. Many companies claim ownership or rights to use your data for research and commercial purposes.</p>
+            </div>
+            
+            <div class="question">
+                <h4>Can I delete my data later?</h4>
+                <p>Some companies allow deletion, but it may not remove data already shared with third parties or used in research.</p>
+            </div>
+            
+            <div class="question">
+                <h4>Who can access my information?</h4>
+                <p>Understand the company's policies on sharing with researchers, pharmaceutical companies, and law enforcement.</p>
+            </div>
+            
+            <div class="question">
+                <h4>How secure is the database?</h4>
+                <p>Ask about encryption, cybersecurity measures, and their history of data breaches.</p>
+            </div>
+            
+            <div class="question">
+                <h4>What happens if the company is sold?</h4>
+                <p>Your data could be transferred to a new owner with different privacy policies and practices.</p>
+            </div>
+            </div>
+        </div>
+
+        <div class="sources">
+            <h2>Learn More</h2>
+            <a href="https://www.cnbc.com/2018/06/16/5-biggest-risks-of-sharing-dna-with-consumer-genetic-testing-companies.html" target="_blank">CNBC: 5 Biggest Risks of Sharing DNA with Consumer Genetic Testing Companies</a>
+            <a href="https://www.who.int/news/item/20-11-2024-who-releases-new-principles-for-ethical-human-genomic-data-collection-and-sharing" target="_blank">WHO: New Principles for Ethical Human Genomic Data Collection and Sharing (2024)</a>
+            <a href="https://www.bbc.com/news/technology-25100878" target="_blank">BBC: The Privacy Concerns Around DNA Testing</a>
+        </div>
     </div>
-    <div class="scroll-hint">Scroll to explore</div>
-  </div>
-</section>
-
-<!-- PROBLEM SECTION -->
-<div style="background: linear-gradient(to bottom, #0a1628, #0d1f3c);">
-<section class="section fade-in">
-  <div class="section-label">The Challenge</div>
-  <h2>Viral outbreaks move faster<br>than traditional medicine</h2>
-  <div class="problem-block">
-    <h3>⚠ The COVID-19 Wake-Up Call</h3>
-    <p>When SARS-CoV-2 emerged in late 2019, the world lacked the rapid-response genomic infrastructure to identify, track, and counter the virus at scale. Traditional vaccine development takes 10–15 years. Diagnostic labs were overwhelmed. Viral mutations outpaced testing kits. The pandemic exposed a critical gap between what biology could offer and what medicine could deploy — in time.</p>
-  </div>
-  <div class="stats-row">
-    <div class="stat-card fade-in">
-      <div class="stat-num">7M+</div>
-      <div class="stat-label">Global COVID-19 deaths reported by 2023</div>
-    </div>
-    <div class="stat-card fade-in">
-      <div class="stat-num">10–15<span style="font-size:1.4rem">yr</span></div>
-      <div class="stat-label">Traditional vaccine development timeline</div>
-    </div>
-    <div class="stat-card fade-in">
-      <div class="stat-num">30+</div>
-      <div class="stat-label">Named COVID-19 variants that required tracking</div>
-    </div>
-  </div>
-</section>
-</div>
-
-<!-- BAND QUOTE -->
-<div class="band">
-  "The genome is the blueprint. Genetic tools are the keys to reading it — fast enough to save lives."
-</div>
-
-<!-- SOLUTIONS SECTION -->
-<div style="background: #0a1628;">
-<section class="section fade-in">
-  <div class="section-label">The Solution</div>
-  <h2>Four genetic technologies<br>that changed everything</h2>
-  <p style="color: var(--muted); line-height: 1.75; max-width: 680px; margin-top: 16px; font-size: 1rem;">
-    Modern genomics gave us an entirely new toolbox. Each technology targets a different part of the outbreak response cycle — from detection, to diagnosis, to treatment and prevention.
-  </p>
-  <div class="solutions-grid">
-
-    <!-- DNA Sequencing -->
-    <div class="sol-card fade-in">
-      <span class="sol-icon">🧬</span>
-      <span class="sol-tag tag-teal">Identification</span>
-      <h3>DNA / RNA Sequencing</h3>
-      <p>Whole-genome sequencing allows scientists to read the complete genetic code of a pathogen within hours of isolating it. This powered global SARS-CoV-2 variant surveillance through databases like GISAID.</p>
-      <ul>
-        <li>Identifies new variants and mutations in near real-time</li>
-        <li>Traces transmission chains and outbreak origins</li>
-        <li>Shares genomic data globally through open databases</li>
-        <li>Enables rapid vaccine target identification</li>
-      </ul>
-    </div>
-
-    <!-- PCR Testing -->
-    <div class="sol-card fade-in">
-      <span class="sol-icon">🔬</span>
-      <span class="sol-tag tag-sky">Diagnosis</span>
-      <h3>PCR Testing</h3>
-      <p>Polymerase Chain Reaction (PCR) amplifies tiny amounts of viral genetic material to detectable levels — providing the gold standard for highly sensitive, specific diagnostic testing.</p>
-      <ul>
-        <li>Detects viral RNA/DNA from a nasal swab sample</li>
-        <li>Returns results within 2–6 hours at scale</li>
-        <li>Distinguishes viral strains with sequence specificity</li>
-        <li>Forms backbone of population-level surveillance</li>
-      </ul>
-    </div>
-
-    <!-- mRNA Vaccines -->
-    <div class="sol-card fade-in">
-      <span class="sol-icon">💉</span>
-      <span class="sol-tag tag-gold">Prevention</span>
-      <h3>mRNA Vaccines</h3>
-      <p>Instead of introducing a weakened virus, mRNA vaccines deliver genetic instructions so your own cells produce a viral protein — triggering immunity without infection. COVID-19 vaccines went from sequence to approved in under 12 months.</p>
-      <ul>
-        <li>Designed computationally once the genome is sequenced</li>
-        <li>Faster to manufacture than traditional vaccines</li>
-        <li>Easily updated when variants emerge</li>
-        <li>Platform applicable to flu, HIV, cancer immunotherapy</li>
-      </ul>
-    </div>
-
-    <!-- CRISPR -->
-    <div class="sol-card fade-in">
-      <span class="sol-icon">✂️</span>
-      <span class="sol-tag tag-accent">Treatment & Detection</span>
-      <h3>CRISPR-Cas Technology</h3>
-      <p>Originally a bacterial immune system, CRISPR has been repurposed both as an ultra-precise diagnostic tool (SHERLOCK, DETECTR) and as a therapeutic approach that can target and silence viral genes directly inside cells.</p>
-      <ul>
-        <li>CRISPR diagnostics detect viral sequences with enzyme speed</li>
-        <li>Can identify COVID, flu, and HIV from a single sample</li>
-        <li>Therapeutic CRISPR targets viral DNA integrated into host cells</li>
-        <li>Under trial for HIV cure and hepatitis B treatment</li>
-      </ul>
-    </div>
-
-  </div>
-</section>
-</div>
-
-<!-- HOW IT WORKS TIMELINE -->
-<div class="full-bg">
-<section class="section fade-in">
-  <div class="section-label">Workflow</div>
-  <h2>From outbreak to response:<br>The genetic pipeline</h2>
-  <div class="timeline">
-    <div class="tl-item">
-      <div class="tl-dot">01</div>
-      <div class="tl-body">
-        <h4>Outbreak Detected → Sequence the Pathogen</h4>
-        <p>When unusual illness clusters emerge, samples are sent to labs for whole-genome sequencing. Within 24–48 hours, scientists have the full genetic blueprint of the pathogen, enabling immediate comparison against known viruses and identification of mutation hotspots.</p>
-      </div>
-    </div>
-    <div class="tl-item">
-      <div class="tl-dot">02</div>
-      <div class="tl-body">
-        <h4>Design PCR Tests for Rapid Mass Diagnosis</h4>
-        <p>Using the genomic sequence, diagnostic teams design PCR primers that target unique regions of the viral genome. These tests can be deployed to hospitals and testing centers within days, enabling population-level surveillance and contact tracing.</p>
-      </div>
-    </div>
-    <div class="tl-item">
-      <div class="tl-dot">03</div>
-      <div class="tl-body">
-        <h4>Develop mRNA Vaccine Targeting Viral Proteins</h4>
-        <p>Scientists identify the viral surface protein (like the spike protein in SARS-CoV-2) and encode the mRNA instructions for it. Clinical trials begin within months; manufacturing can be scaled globally once the mRNA sequence is established, dramatically compressing the vaccine development timeline.</p>
-      </div>
-    </div>
-    <div class="tl-item">
-      <div class="tl-dot">04</div>
-      <div class="tl-body">
-        <h4>Deploy CRISPR for Next-Gen Diagnostics & Therapeutics</h4>
-        <p>CRISPR-based diagnostics provide point-of-care testing without PCR machines. Meanwhile, therapeutic CRISPR programs target the genetic machinery of viruses that integrate into human cells, offering potential functional cures for conditions like HIV and chronic hepatitis B that current vaccines cannot address.</p>
-      </div>
-    </div>
-  </div>
-</section>
-</div>
-
-<!-- COMPARISON TABLE -->
-<div style="background: #0a1628;">
-<section class="section fade-in">
-  <div class="section-label">Comparison</div>
-  <h2>Technology overview</h2>
-  <div class="table-wrap">
-    <table>
-      <thead>
-        <tr>
-          <th>Technology</th>
-          <th>Primary Role</th>
-          <th>Speed</th>
-          <th>COVID-19 Application</th>
-          <th>Future Potential</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>DNA/RNA Sequencing</td>
-          <td>Identify & track pathogens</td>
-          <td>Hours–Days</td>
-          <td>Variant surveillance (Delta, Omicron)</td>
-          <td>Pandemic early-warning networks</td>
-        </tr>
-        <tr>
-          <td>PCR Testing</td>
-          <td>Diagnose infection</td>
-          <td>2–6 Hours</td>
-          <td>Gold-standard COVID test globally</td>
-          <td>Multiplex tests for multiple pathogens</td>
-        </tr>
-        <tr>
-          <td>mRNA Vaccines</td>
-          <td>Prevent infection</td>
-          <td>Months (vs. 10+ years)</td>
-          <td>Pfizer-BioNTech, Moderna vaccines</td>
-          <td>HIV, cancer, flu, malaria vaccines</td>
-        </tr>
-        <tr>
-          <td>CRISPR</td>
-          <td>Detect & treat viruses</td>
-          <td>Minutes (diagnostics)</td>
-          <td>SHERLOCK/DETECTR COVID tests</td>
-          <td>HIV cure, antiviral gene therapy</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</section>
-</div>
-
-<!-- CTA -->
-<div class="cta-section">
-  <div class="section-label" style="margin-bottom:16px;">Take Action</div>
-  <h2>Prepare for the next outbreak — now</h2>
-  <p>Genomic tools are not just for labs. Policy, funding, and public literacy about these technologies are critical to a faster, fairer global response to future pandemics.</p>
-  <div class="cta-btns">
-    <button class="btn-primary">Explore the Research</button>
-    <button class="btn-outline">View Sources</button>
-  </div>
-</div>
-
-<!-- FOOTER -->
-<footer>
-  <p>GenomicShield — A Google Sites Project &nbsp;|&nbsp; Biology · Genomics · Public Health &nbsp;|&nbsp; Built with Google Sites</p>
-  <p style="margin-top:8px; font-size:11px;">Information presented for educational purposes. Sources: WHO, NIH, CDC, GISAID, Nature, NEJM.</p>
-</footer>
-
-<script>
-  // Scroll-triggered fade-in
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) { e.target.classList.add('visible'); }
-    });
-  }, { threshold: 0.12 });
-  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-</script>
 </body>
 </html>
